@@ -5,10 +5,28 @@ const AddBook = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleAddBook = () => {
-    // Implement your logic to add a new book
-    console.log('Adding new book:', { id,title, description });
-    // Optionally, you can redirect the user to the book list or perform other actions after adding the book
+  const handleAddBook = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/books', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          title,
+          description,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add book');
+      }
+      // Optionally, you can handle success or redirect the user after adding the book
+      console.log('Book added successfully');
+    } catch (error) {
+      console.error('Error adding book:', error.message);
+    }
   };
 
   return (

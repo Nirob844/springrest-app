@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Book = () => {
     const [books, setBooks] = useState([]);
@@ -33,8 +34,13 @@ const Book = () => {
       };
 
     return (
-        <div>
-          <div className="overflow-x-auto w-3/4 mx-auto">
+        <div className='w-3/4 mx-auto'>
+            <p className='text-3xl font-bold text-center m-5'>Book Management System</p>
+            <div className="flex justify-between items-center m-3">
+            <p className="text-xl">Book List</p>
+            <Link to="/add" className="ml-3"><button className="btn btn-info">Add new book</button></Link>
+            </div>
+          <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
               <thead>
