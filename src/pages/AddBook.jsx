@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const AddBook = () => {
   const [id, setId] = useState('');
@@ -22,6 +24,10 @@ const AddBook = () => {
       if (!response.ok) {
         throw new Error('Failed to add book');
       }
+      toast.success('Add successful', {
+        duration: 3000,
+        position: 'top-center',
+      });
       // Optionally, you can handle success or redirect the user after adding the book
       console.log('Book added successfully');
     } catch (error) {
@@ -31,7 +37,11 @@ const AddBook = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Add New Book</h1>
+       <h1 className='text-3xl font-bold text-center m-5'>Book Management System</h1>
+      <div className='flex justify-between m-5'>
+      <h1 className="text-xl font-bold">Book</h1>
+      <Link to='/'><button className="btn btn-info ">Back Home</button></Link>
+      </div>
       <form>
         <div className="mb-4">
           <label htmlFor="id" className="text-sm font-semibold block mb-2">
